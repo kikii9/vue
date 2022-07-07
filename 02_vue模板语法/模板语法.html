@@ -9,13 +9,27 @@
 </head>
 <body>
     <div id="root">
+        <h1>插值语法</h1>
+        <h2>用于解析标签体内容</h2>
         <h1>{{name}}</h1>
+        <hr>
+        <h1>指令语法</h1>
+        <h2>用于解析标签（标签属性、标签内容、绑定事件）</h2>
+        <h3>
+            v-bind: 简写 :
+            <br>
+            作用：动态绑定属性 
+
+        </h3>
+        
+        <a :href="url">百度</a>
     </div>
     <script type="text/javascript">
         var app = new Vue({
             el:'#root',
             data:{
-                name:'123'
+                name:'123',
+                url:'www.baidu.com'
             }
         })
     </script>
