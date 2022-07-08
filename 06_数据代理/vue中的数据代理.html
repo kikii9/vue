@@ -9,6 +9,11 @@
 </head>
 <body>
     <div id="root">
+        <h1>数据代理的原理：</h1>
+        <h2>1.通过Object.defineProperty()将data对象中的所有属性添加到vm身上<br>
+            2.为每一个添加到vm上的属性，都指定一个getter/setter <br>
+            3.在getter/setter内部去操作（读/写）data中的相应属性 <br>
+        </h2>
         <h2>{{name}}</h2>
     </div>
     <script>
@@ -18,6 +23,8 @@
             name:'tom'
         }
         })
+
+        console.log(vm)
     </script>
 </body>
 </html>
