@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>计算属性有缓存</h1>
+        姓：<input type="text" v-model="fName">
+        <br>
+        名：<input type="text" v-model="lName">
+        <br>
+
+        全名：{{fullName}}
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#root',
+            data:{
+                fName:'',
+                lName:'',
+            },
+            computed:{
+                fullName:{
+                    get(){
+                        console.log(this);
+                        return this.fName +　this.lName
+                    },
+                    set(){},
+                }
+            }
+        })
+    </script>
+</body>
+</html>
