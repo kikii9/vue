@@ -25,13 +25,23 @@
                 lName:'',
             },
             computed:{
-                fullName:{
-                    get(){
-                        console.log(this);
-                        return this.fName +　this.lName
-                    },
-                    set(){},
+                // 完整写法
+                // fullName:{
+                //     get(){
+                //         console.log(this);
+                //         return this.fName +　this.lName
+                //     },
+                //     set(value){
+                //         this.fName = value
+                //         this.lName = value
+                //     },
+                // }
+
+                // 简写 只考虑读取不考虑改写
+                fullName(){
+                    return this.fName +　this.lName
                 }
+                
             }
         })
     </script>
