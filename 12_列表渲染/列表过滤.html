@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>遍历数组</p>
+        <input type="text" v-model="keyword">
+        <ul v-for="(p,index) in filterpersons" :key="p.id">
+            <li>{{p.name}}---{{p.age}}--{{p.sex}}-{{index}}</li>
+        </ul>
+    </div>
+    <script>
+        // 用watch实现
+        //#region 
+        // new Vue({
+        // el:'#root',
+        // data:{
+        //     keyword:'',
+        //     persons:[
+        //         {id:001,name:'tom',age:18,sex:'male'},
+        //         {id:002,name:'jerry',age:20,sex:'male'},
+        //         {id:003,name:'jack',age:25,sex:'male'}
+        //     ],
+        //     filterpersons:[]
+        // },
+        // watch:{
+        //     keyword:{
+        //     immediate:true,
+        //        handler(val){
+        //         console.log(val);
+        //         this.filterpersons = this.persons.filter((p)=>{
+        //             return p.name.indexOf(val)!==-1
+        //         })
+        //        }
+        //     }
+        // }
+        // })
+        //#endregion
+
+        // 用computed实现
+        new Vue({
+        el:'#root',
+        data:{
+            keyword:'',
+            persons:[
+                {id:001,name:'tom',age:18,sex:'male'},
+                {id:002,name:'jerry',age:20,sex:'male'},
+                {id:003,name:'jack',age:25,sex:'male'}
+            ]
+        },
+        computed:{
+            filterpersons(){
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyword)!=-1
+                })
+            }
+        }
+        })
+    </script>
+</body>
+</html>
