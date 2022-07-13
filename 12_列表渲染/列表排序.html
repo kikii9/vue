@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>遍历数组</p>
+        <input type="text" v-model="keyword">
+        <button @click="sortType = 2">年龄升序</button>
+        <button @click="sortType = 1">年龄降序</button>
+        <button @click="sortType = 0">原顺序</button>
+        <ul v-for="(p,index) in filterpersons" :key="p.id">
+            <li>{{p.name}}---{{p.age}}--{{p.sex}}-{{index}}</li>
+        </ul>
+    </div>
+    <script>
+        // 用computed实现
+        new Vue({
+        el:'#root',
+        data:{
+            keyword:'',
+            sortType:0,
+            persons:[
+                {id:001,name:'tom',age:18,sex:'male'},
+                {id:002,name:'jerry',age:45,sex:'male'},
+                {id:003,name:'jack',age:25,sex:'male'},
+                {id:004,name:'kiki',age:32,sex:'male'},
+            ]
+        },
+        computed:{
+            filterpersons(){
+                const arr = this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyword)!=-1
+                })
+
+                if(this.sortType){
+                    arr.sort((p1,p2)=>{
+                        return this.sortType === 1? p2.age - p1.age : p1.age - p2.age
+                    })
+                }
+                return arr
+            }
+        }
+        })
+    </script>
+</body>
+</html>
